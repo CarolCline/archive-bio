@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Carolyn Cline Entertainment | </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta name="keywords" content="Carolyn, Cline, Carolyn Cline, Music, performing, instruments, Patsy Cline, Patsy Cline impersonator, Miss Florida">
+	<meta name="description" content="Carolyn Cline Music">
+	<!-- master default -->
+	<link rel="stylesheet" type="text/css" href="http://images.freewebs.com/Members/Generationz/Standard/Hip_Hop/Pink/style.css">
+
+	<!--[if lt IE 7]>
+	<script type="text/javascript" src="http://images.freewebs.com/JS/Scripts/ie6dropdownfix.js"></script>
+	<![endif]-->
+</head>
+<body class="hasOneColumn noSidebar">
+
+<script type="text/javascript" src="http://images.freewebs.com/JS/fw.js"></script><script type="text/javascript" src="http://images.freewebs.com/JS/Toolbar/toolbarLoader.js"></script><script type="text/javascript" src="http://images.freewebs.com/JS/Toolbar/fwToolbar.js"></script><SCRIPT language=JavaScript>
+dCol='#FF0000';//date colour.
+fCol='#0000FF';//face colour.
+sCol='#FFFF00';//seconds colour.
+mCol='#FF0000';//minutes colour.
+hCol='#00FF00';//hours colour.
+ClockHeight=50;
+ClockWidth=50;
+ClockFromMouseY=0;
+ClockFromMouseX=100;
+
+//Alter nothing below! Alignments will be lost!
+
+days=new Array("SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY");
+m=new Array("JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER");
+date=new Date();
+day=date.getDate();
+year=date.getYear();
+if (year < 2000) year=year+1900;
+TodaysDate=" "+days[date.getDay()]+" "+day+" "+m[date.getMonth()]+" "+year;
+D=TodaysDate.split('');
+clockH='...';
+clockH=clockH.split('');
+M='....';
+M=M.split('');
+S='.....';
+S=S.split('');
+Face='1 2 3 4 5 6 7 8 9 10 11 12';
+font='Arial';
+size=1;
+clkspeed=0.6;
+ns=(document.layers);
+ie=!ns;
+Face=Face.split(' ');
+faceLength=Face.length;
+a=size*10;
+ymouse=0;
+xmouse=0;
+scrll=0;
+props="<font face="+font+" size="+size+" color="+fCol+"><B>";
+props2="<font face="+font+" size="+size+" color="+dCol+"><B>";
+Split=360/faceLength;
+Dsplit=360/D.length;
+HandHeight=ClockHeight/4.5
+HandWidth=ClockWidth/4.5
+HandY=-7;
+HandX=-2.5;
+scrll=0;
+if (ie && !(document.all)){
+  step=0.09;
+} else {
+  step=0.06;
+}
+
+currStep=0;
+clocky=new Array();clockx=new Array();clockY=new Array();clockX=new Array();
+for (clki=0; clki < faceLength; clki++){clocky[clki]=0;clockx[clki]=0;clockY[clki]=0;clockX[clki]=0}
+clockDy=new Array();clockDx=new Array();clockDY=new Array();clockDX=new Array();
+for (clki=0; clki < D.length; clki++){clockDy[clki]=0;clockDx[clki]=0;clockDY[clki]=0;clockDX[clki]=0}
+if (ns){
+for (clki=0; clki < D.length; clki++)
+document.write('<layer name="nsDate'+clki+'" top=0 left=0 height='+a+' width='+a+'><center>'+props2+D[clki]+'</font></center></layer>');
+for (clki=0; clki < faceLength; clki++)
+document.write('<layer name="nsFace'+clki+'" top=0 left=0 height='+a+' width='+a+'><center>'+props+Face[clki]+'</font></center></layer>');
+for (clki=0; clki < S.length; clki++)
+document.write('<layer name=nsSeconds'+i+' top=0 left=0 width=15 height=15><font face=Arial size=3 color='+sCol+'><center><b>'+S[clki]+'</b></center></font></layer>');
+for (clki=0; clki < M.length; clki++)
+document.write('<layer name=nsMinutes'+clki+' top=0 left=0 width=15 height=15><font face=Arial size=3 color='+mCol+'><center><b>'+M[clki]+'</b></center></font></layer>');
+for (clki=0; clki < clockH.length; clki++)
+document.write('<layer name=nsHours'+clki+' top=0 left=0 width=15 height=15><font face=Arial size=3 color='+hCol+'><center><b>'+clockH[clki]+'</b></center></font></layer>');
+}
+if (ie){
+document.write('<div id="Od" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+for (clki=0; clki < D.length; clki++)
+document.write('<div id="ieDate'+clki+'" style="position:absolute;top:0px;left:0;height:'+a+';width:'+a+';text-align:center">'+props2+D[clki]+'</B></font></div>');
+document.write('</div></div>');
+document.write('<div id="Of" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+for (clki=0; clki < faceLength; clki++)
+document.write('<div id="ieFace' + clki + '" style="position:absolute;top:0px;left:0;height:'+a+';width:'+a+';text-align:center">'+props+Face[clki]+'</B></font></div>');
+document.write('</div></div>');
+document.write('<div id="Oh" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+for (clki=0; clki < clockH.length; clki++)
+document.write('<div id="ieHours' + clki + '" style="position:absolute;width:16px;height:16px;font-family:Arial;font-size:16px;color:'+hCol+';text-align:center;font-weight:bold">'+clockH[clki]+'</div>');
+document.write('</div></div>');
+document.write('<div id="Om" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+for (clki=0; clki < M.length; clki++)
+document.write('<div id="ieMinutes'+clki+'" style="position:absolute;width:16px;height:16px;font-family:Arial;font-size:16px;color:'+mCol+';text-align:center;font-weight:bold">'+M[clki]+'</div>');
+document.write('</div></div>')
+document.write('<div id="Os" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+for (clki=0; clki < S.length; clki++)
+document.write('<div id="ieSeconds'+clki+'" style="position:absolute;width:16px;height:16px;font-family:Arial;font-size:16px;color:'+sCol+';text-align:center;font-weight:bold">'+S[clki]+'</div>');
+document.write('</div></div>')
+}
+(ns)?window.captureEvents(Event.MOUSEMOVE):0;
+function Mouse(evnt){
+ymouse = (!document.all)?evnt.pageY+ClockFromMouseY-(window.pageYOffset):event.y+ClockFromMouseY;
+xmouse = (!document.all)?evnt.pageX+ClockFromMouseX:event.x+ClockFromMouseX;
+}
+(ns)?window.onMouseMove=Mouse:document.onmousemove=Mouse;
+function ClockAndAssign(){
+time = new Date ();
+secs = time.getSeconds();
+sec = -1.57 + Math.PI * secs/30;
+mins = time.getMinutes();
+min = -1.57 + Math.PI * mins/30;
+hr = time.getHours();
+hrs = -1.575 + Math.PI * hr/6+Math.PI*parseInt(time.getMinutes())/360;
+if (ie){
+document.getElementById("Od").style.top=window.document.body.scrollTop;
+document.getElementById("Of").style.top=window.document.body.scrollTop;
+document.getElementById("Oh").style.top=window.document.body.scrollTop;
+document.getElementById("Om").style.top=window.document.body.scrollTop;
+document.getElementById("Os").style.top=window.document.body.scrollTop;
+}
+for (clki=0; clki < faceLength; clki++){
+ var F=(ns)?document.layers['nsFace'+i]:document.getElementById("ieFace" + clki ).style;
+ F.top=clocky[clki] + ClockHeight*Math.sin(-1.0471 + clki*Split*Math.PI/180)+scrll;
+ F.left=clockx[clki] + ClockWidth*Math.cos(-1.0471 + clki*Split*Math.PI/180);
+ }
+for (clki=0; clki < clockH.length; clki++){
+ var HL=(ns)?document.layers['nsHours'+clki]:document.getElementById("ieHours"+clki).style;
+ HL.top=clocky[clki]+HandY+(clki*HandHeight)*Math.sin(hrs)+scrll;
+ HL.left=clockx[clki]+HandX+(clki*HandWidth)*Math.cos(hrs);
+ }
+for (clki=0; clki < M.length; clki++){
+ var ML=(ns)?document.layers['nsMinutes'+clki]:document.getElementById("ieMinutes"+clki).style;
+ ML.top=clocky[clki]+HandY+(clki*HandHeight)*Math.sin(min)+scrll;
+ ML.left=clockx[clki]+HandX+(clki*HandWidth)*Math.cos(min);
+ }
+for (clki=0; clki < S.length; clki++){
+ var SL=(ns)?document.layers['nsSeconds'+clki]:document.getElementById("ieSeconds" + clki).style;
+ SL.top=clocky[clki]+HandY+(clki*HandHeight)*Math.sin(sec)+scrll;
+ SL.left=clockx[clki]+HandX+(clki*HandWidth)*Math.cos(sec);
+ }
+for (clki=0; clki < D.length; clki++){
+ var DL=(ns)?document.layers['nsDate'+clki]:document.getElementById("ieDate" + clki).style;
+ DL.top=clockDy[clki] + ClockHeight*1.5*Math.sin(currStep+clki*Dsplit*Math.PI/180)+scrll;
+ DL.left=clockDx[clki] + ClockWidth*1.5*Math.cos(currStep+clki*Dsplit*Math.PI/180);
+ }
+currStep-=step;
+}
+function Delay(){
+scrll=(ns)?window.pageYOffset:0;
+clockDy[0]=Math.round(clockDY[0]+=((ymouse)-clockDY[0])*clkspeed);
+clockDx[0]=Math.round(clockDX[0]+=((xmouse)-clockDX[0])*clkspeed);
+for (clki=1; clki < D.length; clki++){
+clockDy[clki]=Math.round(clockDY[clki]+=(clockDy[clki-1]-clockDY[clki])*clkspeed);
+clockDx[clki]=Math.round(clockDX[clki]+=(clockDx[clki-1]-clockDX[clki])*clkspeed);
+}
+clocky[0]=Math.round(clockY[0]+=((ymouse)-clockY[0])*clkspeed);
+clockx[0]=Math.round(clockX[0]+=((xmouse)-clockX[0])*clkspeed);
+for (clki=1; clki < faceLength; clki++){
+clocky[clki]=Math.round(clockY[clki]+=(clocky[clki-1]-clockY[clki])*clkspeed);
+clockx[clki]=Math.round(clockX[clki]+=(clockx[clki-1]-clockX[clki])*clkspeed);
+}
+ClockAndAssign();
+setTimeout('Delay()',30);
+}
+
+if (ns||ie) {
+Delay();
+}
+</SCRIPT>
+
+<!--
+{NavHeaderFormat}
+<li class="fw-navheader">{NavHeader}</li>
+{/NavHeaderFormat}
+
+
+
+-->
+
+
+
+
+<div id="fw-container">
+	<div id="fw-head">
+		<h1 id="fw-title"><a id="fw-titlelink" href="http://www.carolyncline.com/">Carolyn Cline Entertainment</a></h1>
+		<h2 id="fw-smalltitle"></h2>
+		<div id="logo-div" class="fw-logo"></div>
+	</div>
+
+
+	<div id="fw-blockContainer">
+		<div id="fw-mainnavwrap">
+			<div id="fw-nav-menu">
+				<ul>
+					<li><a class="section" href="http://www.carolyncline.com/index.htm">Home</a></li>
+<li><a class="section" href="http://www.carolyncline.com/gigcalendar.htm">Gig Calendar</a></li>
+<li><a class="section" href="http://www.carolyncline.com/playlist.htm">Play List</a></li>
+<li><a class="section" href="http://www.carolyncline.com/apps/photos/">Photo Gallery</a></li>
+<li><a class="section" href="http://www.carolyncline.com/contactus.htm">Contact Us</a></li>
+
+
+				</ul>
+			</div>
+		</div>
+
+		<div id="fw-bigcontain">
+			
+
+			<div id="fw-columnContainer">
+				<div id="fw-mainColumn">
+					<!-- ParagraphStart 219337297 --><div class="fw-paragraph">
+			<div class="fw-paragraphtop"></div>
+			<h3 class="fw-title"><a name="219337297"></a><!-- ParagraphTitleStart --><font size="+0"><b>Carolyn Cline Music</b></font>  <!-- ParagraphTitleEnd --></h3>
+			<div class="fw-text"><!-- ParagraphBodyStart --><p><img border="0" width="284" src="http://www.carolyncline.com/cc%20photo%204.jpg" height="420" style="margin: 8px; width: 284px; height: 420px" class="fw_image_freewebs fwSizeProp" />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <img border="0" width="319" src="http://www.carolyncline.com/CRW_7763_RT8.jpg" height="422" style="margin: 8px; width: 319px; height: 422px" class="fw_image_freewebs fwSizeProp" /></p><p>&#160;</p><p>Carolyn Cline is a world class preformer&#160;who has traveled the world performing her unique and excitng show.&#160; She is a veteran of Las Vegas, Hollywood, and New York.&#160; Carolyn has also perfomed internationally in Tokyo, Japan , Bangkok, Thailand , Manila, Philippines , and Papeete, Tahiti are just a few.&#160; Having been in the entertainment business for over thirty years, Carolyn has appeared with such mega stars as Bob Hope, Red Skelton, Liberace, Tony Orlando, Lee Greenwood, and Les Elgart's Orchrestra.&#160; Carolyn has earned the titles for Miss Florida, 1978,&#160;Miss America 1979 2nd runner up, Miss New Mexico Universe 1973 in the Miss USA Pageant and she won the talent and swimsuit award at the national pageants.&#160; She is a talented and versatile performer&#160;who plays a variety of instruments including the piano, organ, guitar, banjo, mandalin, flute, violin, and drums.&#160; Carolyn is a musician, singer, opening act, entertainer, and composer.&#160; She has&#160;earned a Bachelor of Music Degree and a Master of Arts Degree in Music Education.&#160; Carolyn also sings a tribute to her late great cousin Patsy Cline.&#160; Here are the memories of a talented entertainer named Patsy Cline from Winchester, Virginia, who still manages to capture the hearts of everyone through Carolyn Cline's&#160;voice, phrasing, and style&#160;to an unforgettable artist.&#160; &#160;</p><p>&#160;</p><!-- ParagraphBodyEnd --></div>
+			<div class="fw-paragraphbottom"></div>
+		</div><!-- ParagraphEnd 219337297 --><!-- ParagraphStart 219337298 --><div class="fw-paragraph">
+			<div class="fw-paragraphtop"></div>
+			<h3 class="fw-title"><a name="219337298"></a><!-- ParagraphTitleStart -->Booking Carolyn Cline  <!-- ParagraphTitleEnd --></h3>
+			<div class="fw-text"><!-- ParagraphBodyStart --><div class="layout layout-half">To book the talented Carolyn Cline, check out the &#34;<span class="fw_link_page">C</span><span class="fw_link_page">ontact U</span><span class="fw_link_page">s</span>&#34; page. </div><!-- ParagraphBodyEnd --></div>
+			<div class="fw-paragraphbottom"></div>
+		</div><!-- ParagraphEnd 219337298 -->
+				</div>
+			</div>
+		</div>
+
+		<div id="fw-sidebar">
+			<div id="fw-sidebarbegin"></div>
+			
+			<div id="fw-sidebarend"></div>
+		</div>
+		<div class="clears">
+		</div>
+	</div>
+
+	<div id="fw-footer">
+		<p id="fw-foottext" class="fw-footertext">&copy; 2007</p>
+		<p><script type="text/javascript" src="http://images.freewebs.com/JS/clicky.js"></script><script type="text/javascript">var clicky_page_title='Home';startClicky(33749360,'fwdb3');</script><noscript><p><img alt="Clicky Web Analytics" src="http://in.freewebs.getclicky.com/33749360-fwdb3.gif"/></p></noscript><SCRIPT type = "text/javascript" src="http://counters.freewebs.com/Members/Counters/tracker.jsp"></SCRIPT></p>
+	</div>
+</div>
+
+</body>
+</html>
+
+
+<!-- PageID 100745889-->
+<!-- host6-vm74-ub-local.freewebs.com -->
